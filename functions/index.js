@@ -1,7 +1,7 @@
 import { onRequest } from "firebase-functions/v2/https";
 import express from "express"
 import cors from 'cors'
-import { createUser, login } from "./src/users";
+import { createUser, login } from "./src/users.js";
 import { getAllRecipes, createRecipe } from "./src/recipes.js";
 import { isAuthenticated } from "./src/middleware.js";
 
