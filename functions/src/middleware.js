@@ -9,15 +9,13 @@ export async function isAuthenticated(req, res, next) {
         return;
     }
     //then check if the token is valid:
-    jwt.verify(authorization, secretKey)
-    .then(decoded => {
-        req.locals = decoded; // attach our decoded token to the request...
-        // if so, go on:
+    jwt.verify(authorization, secretKey, (err, decoded) => {
+        if(err) {
+            res.status(401).send(err);
+            return;
+        }
+        //valid token;
+        req.locals = decoded;
         next();
-    })
-    .catch(err => { // not valid token;
-        res.status(401).send(err);
-    })
-    //is so, go on:
-    next();
+});
 }
