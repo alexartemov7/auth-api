@@ -1,4 +1,4 @@
-import { Jwt } from "jsonwebtoken";
+import jwt from "jsonwebtoken";
 import { db } from "./dbConnect.js";
 import { secretKey } from "./creds.js";
 const coll = db.collection('users');
